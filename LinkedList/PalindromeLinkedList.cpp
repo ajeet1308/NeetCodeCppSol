@@ -8,6 +8,17 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+#include <bits/stdc++.h>
+using namespace std;
+
+struct ListNode
+{
+   int val;
+   ListNode *next;
+   ListNode() : val(0), next(nullptr) {}
+   ListNode(int x) : val(x), next(nullptr) {}
+   ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
@@ -60,7 +71,7 @@ public:
     bool isPalindrome(ListNode* head) {
         // Optimal way TC: O(N), SC:O(1)
         // Base cases
-        if (head == NULL || head->next == NULL) return true;
+        if (head == nullptr || head->next == nullptr) return true;
         // Finding middle element of linked list using tortoise and hare algorithm
         ListNode *m1 = head, *m2 = hareAndToritoise(head);
         m2 = reverseSecondHalf(m2);

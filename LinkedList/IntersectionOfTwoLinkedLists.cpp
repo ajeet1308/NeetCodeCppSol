@@ -34,3 +34,27 @@ public:
         return nullptr;
     }
 };
+
+/*------------------------------------------------------------------------*/
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        // BruteForce way TC:O(n + m) , SC:O(n + m)
+        ListNode *currA = headA;
+        map<ListNode*, int>hashMap;
+        while(currA) {
+            hashMap[currA]++;
+            currA = currA->next;
+        }
+        currA = headB;
+        while(currA) {
+            hashMap[currA]++;
+            currA = currA->next;
+        }
+        for (auto ele : hashMap) {
+            if (ele.second > 1) return ele.first;
+        }
+        return nullptr;
+    }
+};

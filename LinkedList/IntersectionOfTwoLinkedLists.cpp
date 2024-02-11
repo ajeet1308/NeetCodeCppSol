@@ -58,3 +58,21 @@ public:
         return nullptr;
     }
 };
+/*------------------------------------------------------------------------------*/
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        // Best and Optimal way : following tortoise and hare principle TC: O(n+m), SC:O(1)
+        ListNode *currA = headA, *currB = headB;
+        while(currA != currB) {
+            currA = currA ? currA->next : headB;
+            currB = currB ? currB->next : headA;
+        }
+        /*
+            Here logic is simple after max two Iteration we would be able to achieve our intersection node either would be nullptr or a node
+            For more info Kindly look editorial and dry run you'll get it
+        */
+        return currA;
+    }
+};

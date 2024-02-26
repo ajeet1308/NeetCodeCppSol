@@ -58,3 +58,33 @@ class Solution {
 
     }
 }
+
+/**************************************************************************************************************/
+
+class Solution {
+    
+    public Node copyRandomList(Node head) {
+        // TC: O(N), SC:O(N)
+        // Base case
+        if (head == null) return head;
+
+        HashMap<Node, Node> hashMap = new HashMap<>();
+        // Above hashMap would map both the nodes old and new nodes copy with each other
+
+        Node curr = head;
+        while(curr != null) {
+            hashMap.put(curr, new Node(curr.val));
+            curr = curr.next;
+        }
+
+        curr = head;
+        while(curr != null) {
+            hashMap.get(curr).next = hashMap.get(curr.next);
+            hashMap.get(curr).random = hashMap.get(curr.random);
+            curr = curr.next;
+        }
+
+        return hashMap.get(head);
+
+    }
+}
